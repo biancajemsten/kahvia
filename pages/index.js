@@ -1,5 +1,5 @@
-import Head from 'next/head'
-
+import Head from "next/head";
+import { ButtonComponent as Button } from "../components/Button";
 export default function Home() {
   return (
     <div className="container">
@@ -46,6 +46,7 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <Button></Button>
       </main>
 
       <footer>
@@ -54,7 +55,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
@@ -205,5 +206,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
