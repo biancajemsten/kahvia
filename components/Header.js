@@ -1,20 +1,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './Header.module.scss';
+import './Header.scss';
 
-export function Header() {
+export function HeaderComponent() {
     return (
-        <header className={styles.header}>
-                    <div className={styles.header__inner}>
-                            <p>Hotel Name</p>
+        <header className="header">
+                    <div className="header__inner">
+                            <p className="header__user">Hotel Name</p>
+                            <div className="header__image">
                             <Link href="/">
                             <Image
                             src="/PauligLogo.png"
                             alt="Paulig Logo"
                             width={300}
                             height={150}
+                            
                             />
                             </Link>
+                            </div>
                     </div>
     </header>
     )
