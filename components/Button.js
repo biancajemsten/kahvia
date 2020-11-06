@@ -1,14 +1,14 @@
-import styles from './Button.module.scss'
+import styles from "./Button.module.scss";
+import { Button } from "antd";
 
-export function Button() {
+export function ButtonComponent() {
   return (
-    <button
-      type="button"
+    <Button
       // Note how the "error" class is accessed as a property on the imported
       // `styles` object.
       className={styles.error}
     >
       Destroy
-    </button>
-  )
+    </Button>
+  );
 }
