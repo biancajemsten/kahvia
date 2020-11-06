@@ -1,0 +1,14 @@
+.header {
+    position: fixed;
+    top: 0;
+    display: flex;
+
+    &__inner{
+        width: 100vw;
+        display: grid;
+        grid-column: 1fr 2fr;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 2fr;
+        margin-top: 20px;
+    }
+  }
