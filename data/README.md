@@ -11,3 +11,5 @@ Contains data for the delivery schedule showing nearby deliveries to allow peopl
 # trends.json
 
 Contains data which maps out key trends we'll be displaying to consumers, to mock the backend call of information including most frequently bought products, seasonal trends, location trends
+
+- months shows sales and quantity for each product
