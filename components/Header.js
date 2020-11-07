@@ -6,7 +6,7 @@ export function HeaderComponent() {
     return (
         <header className="c-header">
                     <div className="c-header__inner">
-                            <p className="c-header__user">Hotel Name</p>
+                            <p className="c-header__user">Helsinki Cafe</p>
                             <div className="c-header__image">
                             <Link href="/">
                             <Image

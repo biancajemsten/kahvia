@@ -1,0 +1,13 @@
+.c-textbox{
+    display: flex;
+    background-color: var(--dark-beige);
+    border-radius: 5px;
+    &__bean{
+        height: 30px;
+        margin: 10px;
+    }
+    &__text{
+        padding-left: 10px;
+    }
+
+}

@@ -10,7 +10,7 @@ export function HomepageBlock() {
     <div className="c-blocks">
     <Row className="c-blocks__row">
       <Col span={8} align="center" className="c-blocks__col" >
-      <a href="/">
+      <a href="/delivery-schedule">
         <div className="c-blocks__imageContainer">
             <img className="c-blocks__image" src={DeliveryTruck} />
         </div>
