@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Row, Radio } from "antd";
 import { useState, useEffect } from "react";
 import { Loading } from "../components/Loading";
 import { Bar, Polar } from 'react-chartjs-2';
@@ -42,31 +42,64 @@ const bData = (isQuantity) => ({
       hoverBorderColor: 'rgba(81,54,41,0.95)',
       data: isQuantity ? countryDataForQuantity : countryDataForRevenue,
     }
-  ]
+  ],
+  options: {
+    title: {
+      display: true,
+      text: 'Custom Chart Title'
+    },
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: isQuantity ? 'units' : 'euros',
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'X text'
+        }
+      }],
+    }
+  },
 });
 
-  const cityDataForQuantity = [191, 184, 162, 182, 134, 123, 152, 141, 131, 138, 162, 174];
-  const countryDataForQuantity = [190, 158, 151, 172, 118, 137, 167, 161, 145, 128, 170, 181];
-  const cityDataForRevenue = [995, 884, 962, 434, 523, 382, 452, 656, 745, 635, 838, 974];
-  const countryDataForRevenue = [990, 758, 872, 558, 437, 395, 452, 645, 505, 740, 867, 961];
+  const cityDataForQuantity = [179, 184, 162, 182, 134, 123, 152, 141, 131, 138, 162, 174];
+  const countryDataForQuantity = [190, 158, 151, 172, 118, 137, 167, 161, 145, 128, 170, 151];
+  const cityDataForRevenue = [915, 884, 962, 434, 523, 382, 452, 656, 745, 635, 838, 984];
+  const countryDataForRevenue = [985, 758, 872, 558, 437, 395, 475, 645, 505, 740, 867, 951];
   
-const barOption = (setIsQuantity, isQuantity) => (
-    setIsQuantity(!isQuantity)
-);
+const barOption = (e, setIsQuantity) => {
+  const isQ = !!(e.target.value === 'quantity');
+  setIsQuantity(isQ);
+}
   
 
 export default function DataDashboard() {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [isQuantity, setIsQuantity] = useState(true);
   
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-const textBoxProps = {
-  textValue: 'Pssst... Based on studies customers buy more coffee when the days are shorter, so stock up ready for winter!'
+const textBox1Props = {
+  textValue: 'Based on studies, customers buy more coffee when the days are shorter, so stock up ready for Winter!',
+  textClass: 'c-dashboard__tip'
 }
-
+const textBox2Props = {
+  textValue: 'From October, customers are 30% more likely to stay inside. Do you want to reduce the number of take away cups?',
+  textClass: 'c-dashboard__tip'
+}
+const textBox3Props = {
+  textValue: 'Check out our shared deliveries to save money on travel and the environment!',
+  textClass: 'c-dashboard__tip'
+}
+const textBox4Props = {
+  textValue: 'The Helsinki Christmas Markets start in 1 month! Do you know the footfall past your cafe?',
+  textClass: 'c-dashboard__tip'
+}
   const summaryProps = {
     title: "Helsinki Cafe",
     nextScheduledDelivery: "Nov 15",
@@ -86,21 +119,53 @@ const textBoxProps = {
     return (
       <div className="c-dashboard__container">
         <Row>
-          <Col span={7}>
+          <Col span={8}>
             <CafeSummary {...summaryProps} />
-              <TextBox {...textBoxProps} />
+              <TextBox {...textBox1Props} style={{marginTop: 24}} />
+              <TextBox {...textBox2Props} />
+              <TextBox  {...textBox4Props} />
+              <TextBox {...textBox3Props} />
           </Col>
-          <Col span={17}>
-            <Polar data={pData} />
+          <Col span={4}></Col>
+          <Col span={12}>
+            <Row span={24}>
+            <h2>
+              Most frequently ordered products in this season
+            </h2>
+            </Row>
+            <Row span={24}>
+              <Polar data={pData} />
+            </Row>
           </Col>
         </Row>
         <Row>
+          <Col span={2}></Col>
+          <Col span={22}>
+            <h2 className="c-dashboard__chartDescription">
+              Average coffee orders for each cafe per month based on:
+            </h2>
+          </Col>
+          <Col span={2}></Col>
+          <Col span={8}>
+            <Radio.Group defaultValue="quantity" onChange={(e) => barOption(e, setIsQuantity)}>
+              <Radio.Button value="quantity">Quantities</Radio.Button>
+              <Radio.Button value="revenue">Revenue</Radio.Button>
+            </Radio.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={2}></Col>
           <Col span={20}>
             <Bar data={() => bData(isQuantity)} />
           </Col>
-          <Col span={4}>
-            <button onClick={() => barOption(setIsQuantity, isQuantity)}>{isQuantity ? 'Revenue' : 'Quantity'}</button>
+          <Col span={2}></Col>
+        </Row>
+                <Row>
+          <Col span={8}></Col>
+          <Col span={8}>
+            <p className="c-dashboard__axesDescription">Monthly average per cafe</p>
           </Col>
+          <Col span={8}></Col>
         </Row>
       </div>
     );
