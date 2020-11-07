@@ -44,11 +44,15 @@ const bData = (isQuantity) => ({
     }
   ],
   options: {
+    title: {
+      display: true,
+      text: 'Custom Chart Title'
+    },
     scales: {
       yAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'Y text'
+          labelString: isQuantity ? 'units' : 'euros',
         }
       }],
       xAxes: [{
@@ -64,7 +68,7 @@ const bData = (isQuantity) => ({
   const cityDataForQuantity = [179, 184, 162, 182, 134, 123, 152, 141, 131, 138, 162, 174];
   const countryDataForQuantity = [190, 158, 151, 172, 118, 137, 167, 161, 145, 128, 170, 151];
   const cityDataForRevenue = [915, 884, 962, 434, 523, 382, 452, 656, 745, 635, 838, 984];
-  const countryDataForRevenue = [993, 758, 872, 558, 437, 395, 475, 645, 505, 740, 867, 951];
+  const countryDataForRevenue = [985, 758, 872, 558, 437, 395, 475, 645, 505, 740, 867, 951];
   
 const barOption = (e, setIsQuantity) => {
   const isQ = !!(e.target.value === 'quantity');
@@ -123,7 +127,7 @@ const textBoxProps = {
           <Col span={2}></Col>
           <Col span={22}>
             <h2 className="c-dashboard__chartDescription">
-              Average coffee orders for each restaurant based on:
+              Average coffee orders for each cafe per month based on:
             </h2>
           </Col>
           <Col span={2}></Col>
@@ -140,6 +144,13 @@ const textBoxProps = {
             <Bar data={() => bData(isQuantity)} />
           </Col>
           <Col span={2}></Col>
+        </Row>
+                <Row>
+          <Col span={8}></Col>
+          <Col span={8}>
+            <p className="c-dashboard__axesDescription">Monthly average per cafe</p>
+          </Col>
+          <Col span={8}></Col>
         </Row>
       </div>
     );

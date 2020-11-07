@@ -5,8 +5,10 @@
   &__container {
     height: 100%;
   }
-
   &__chartDescription {
     margin: 35px 0 15px;
+  }
+  &__axesDescription {
+    text-align: center;
   }
 }
