@@ -1,6 +1,7 @@
 .c-blocks{
+    background-color: var(--beige);
     &__row{
-        padding:  32px 0;
+        padding:  5% 0 0 0;
     }
 
     &__imageContainer{
@@ -8,8 +9,20 @@
         border-radius: 50%;
         width: 50%;
         padding: 10%;
+        &.second{
+            background-color: var(--dark-red);
+        }
     }
     &__text{
         padding-top:24px;
     }
+    &__col:hover{
+        .c-blocks__imageContainer{
+            width: 55%;
+        }
+        .c-blocks__text{
+            font-size:30px;
+        }
+    }
+      
 }
