@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import {DeliverySummary} from "../components/DeliverySumamry";
 import {DeliveryScheduler} from "../components/DeliveryScheduler";
 import { TextBox } from "../components/TextBox";
+import {GoogleMaps} from '../components/GoogleMaps';
 const summaryProps = {
     title: "Helsinki Cafe",
     nextScheduledDelivery: "Nov 15, 10am-12pm",
@@ -15,23 +16,22 @@ const textBoxProps = {
 export default function DeliverySchedule() {
   return (
     <div className="c-delivery__container">
-        <Row>
+        <Row className="c-delivery__row">
             <Col span={8} offset={8}>
                 <DeliverySummary {...summaryProps}/>
+                
             </Col>
         </Row>
-        <Row>
-            <Col span={12}>
+        <Row className="c-delivery__row">
+            <Col span={11}>
               <DeliveryScheduler/>
-
-         
-            </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
               <TextBox {...textBoxProps}/>
             </Col>
-          </Row>
+            <Col offset={2}  span={11}>
+              <GoogleMaps/>
+            </Col>
+        </Row>
+
     </div>
   );
 }
