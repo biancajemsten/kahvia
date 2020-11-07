@@ -21,7 +21,7 @@ export default function DeliverySchedule() {
             </Col>
         </Row>
         <Row>
-            <Col span={8}>
+            <Col span={12}>
               <DeliveryScheduler/>
 
          

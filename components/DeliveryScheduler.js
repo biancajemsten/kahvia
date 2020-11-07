@@ -2,6 +2,7 @@ import { Typography, Row, Col, DatePicker, TimePicker } from "antd";
 import "./DeliveryScheduler.scss";
 const { Title, Text } = Typography;
 import { useState  } from "react";
+import { OtherDeliveries } from "./OtherDeliveries";
 
 
 
@@ -67,10 +68,14 @@ const [toTime, setToTime] = useState('');
         {!chosenDate &&
             <Text> choose a date to see other local deliveries</Text>
         }
-         {chosenDate &&
-            <Text> this place</Text>
-        }
+       
     </Row>
+    <div class="c-delivery-scheduler__others">
+    {chosenDate &&
+            <OtherDeliveries date={chosenDate} chosenTime={fromTime}></OtherDeliveries>
+        }
+    
+    </div>
     </div>
   );
 }

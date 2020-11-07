@@ -14,5 +14,9 @@
     &__row {
       margin-bottom: 5px;
     }
+    &__others{
+      max-height: 100px;
+      overflow-y: auto;
+    }
   }
   

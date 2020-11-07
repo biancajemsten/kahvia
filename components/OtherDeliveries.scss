@@ -1,0 +1,14 @@
+.c-other-deliveries{
+    background-color: var(--beige);
+    border: 1px solid var(--dark-red);
+    &__row{
+        padding-left: 10px;
+    }
+    .ant-typography{
+        color: var(--dark-red);
+    }
+    .ant-btn-primary{
+        background-color: var(--dark-beige) !important;
+        width: 100%;
+    }
+}
