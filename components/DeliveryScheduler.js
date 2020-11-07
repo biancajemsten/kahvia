@@ -4,10 +4,12 @@ const { Title, Text } = Typography;
 import { useState } from "react";
 import { OtherDeliveries } from "./OtherDeliveries";
 
+
 export function DeliveryScheduler() {
   const [chosenDate, setChosenDate] = useState("");
   const [fromTime, setFromTime] = useState("");
   const [toTime, setToTime] = useState("");
+  const format = 'HH:mm';
   return (
     <div className="c-delivery-scheduler">
       <Title className="c-delivery-scheduler__title">Schedule a Delivery</Title>
@@ -29,6 +31,7 @@ export function DeliveryScheduler() {
         <Col span={8} className="c-delivery-scheduler__align-right">
           <TimePicker
             onChange={(value, valueString) => setFromTime(valueString)}
+            format={format}
           />
         </Col>
       </Row>
