@@ -6,6 +6,7 @@
     margin-bottom: 40px;
   }
   &__item {
+    position: relative;
     background-color: #fff;
     border-radius: 5px;
     margin: 10px 0;
@@ -29,10 +30,9 @@
       color: white;
       padding: 2px 5px;
       border-radius: 1em;
-    }
-    &__publish-container {
-      display: flex;
-      justify-content: flex-end;
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
     }
   }
 

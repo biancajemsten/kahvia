@@ -17,8 +17,8 @@ function NewsItem({
   return (
     <article className="c-news-feed__item">
       <a href={url}>
-        <Row>
-          <Col>
+        <Row wrap={false}>
+          <Col flex="250px">
             <Image
               className="c-news-feed__item__image"
               width={250}
@@ -26,7 +26,7 @@ function NewsItem({
               src={urlToImage}
             />
           </Col>
-          <Col className="c-news-feed__item__text-container" span={14} xxl={16}>
+          <Col className="c-news-feed__item__text-container" flex="auto">
             <Title ellipsis level={3}>
               {title}
             </Title>
@@ -38,12 +38,10 @@ function NewsItem({
             >
               {description}
             </Paragraph>
-            <div className="c-news-feed__item__publish-container">
-              <Text ellipsis className="c-news-feed__item__publish-info">
-                Published {publishedAt.substring(0, 10)}{" "}
-                {source && source.name && `by ${source.name}`}
-              </Text>
-            </div>
+            <Text ellipsis className="c-news-feed__item__publish-info">
+              Published {publishedAt.substring(0, 10)}{" "}
+              {source && source.name && `by ${source.name}`}
+            </Text>
           </Col>
         </Row>
       </a>
