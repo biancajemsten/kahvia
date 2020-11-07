@@ -1,12 +1,12 @@
-import { Empty, Col, Row } from "antd";
+import { Col, Row } from "antd";
 import { useState, useEffect } from "react";
 import { Loading } from "../components/Loading";
 import { Polar } from 'react-chartjs-2';
-
+import { CafeSummary } from "../components/CafeSummary";
 export default function DataDashboard() {
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
-    setTimeout(() => setLoading(false), 4000);
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
 
@@ -28,7 +28,7 @@ export default function DataDashboard() {
 
   if (isLoading)
     return (
-      <Row justify="center" align="center">
+      <Row justify="center" className="c-dashboard__loading-container">
         <Col flex>
           <Loading />
         </Col>
@@ -41,6 +41,13 @@ export default function DataDashboard() {
         <h1>This is a company data dashboard</h1>
         <Empty />
         <div><Polar data={data} /></div>
+        <Row>
+          <Col span={8}>
+            <CafeSummary />
+          </Col>
+          <Col flex={1}>Item2</Col>
+        </Row>
+        <div>ISABEL WORK ON CHARTS HERE</div>
       </div>
     );
 }
