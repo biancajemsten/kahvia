@@ -8,18 +8,43 @@ import { TextBox } from "../components/TextBox";
 const barColors =['rgba(66,22,22,0.7)','rgba(133,90,69,0.7)', 'rgba(81,54,41,0.7)', 'rgba(56,38,29,0.7)', 'rgba(133,117,109,0.7)', 'rgba(245,166,127,0.7)', 'rgba(31,23,16,0.7)', 'rgba(71,52,36,0.7)']
 const hoverColors =['rgba(66,22,22,0.8)','rgba(133,90,69,0.8)', 'rgba(81,54,41,0.8)', 'rgba(56,38,29,0.8)', 'rgba(133,117,109,0.8)', 'rgba(245,166,127,0.8)', 'rgba(31,23,16,0.8)', 'rgba(71,52,36,0.8)']
 
-  const pData = {
-    labels: ['paulig TA cup 200 ml', 'Tazza hot choco', 'Paulig Vending Medium Roast', 'Paulig Special Espresso','Lipton Lemon tea','Vendor Whitener','Vendor Espresso','Tazza Low Lactose Hot Choco'],
-    datasets: [
-      {
-        borderWidth: 1,
-        data: [65, 59, 80, 81, 52, 71, 37, 78],
-        backgroundColor: barColors,
-        hoverBackgroundColor: hoverColors,
+const personalPData = {
+  labels: ['paulig TA cup 200 ml', 'Tazza hot choco', 'Paulig Vending Medium Roast', 'Paulig Special Espresso','Lipton Lemon tea','Vendor Whitener','Vendor Espresso','Tazza Low Lactose Hot Choco'],
+  datasets: [
+    {
+      borderWidth: 1,
+      data: [65, 59, 80, 81, 52, 71, 37, 78],
+      backgroundColor: barColors,
+      hoverBackgroundColor: hoverColors,
 
-      }
-    ]
-  };
+    }
+  ]
+};
+
+const cityPData = {
+  labels: ['paulig TA cup 200 ml', 'Tazza hot choco', 'Paulig Vending Medium Roast', 'Paulig Special Espresso', 'Lipton Lemon tea', 'Vendor Whitener', 'Vendor Espresso', 'Tazza Low Lactose Hot Choco'],
+  datasets: [
+    {
+      borderWidth: 1,
+      data: [78, 92, 76, 51, 43, 34, 65, 81],
+      backgroundColor: barColors,
+      hoverBackgroundColor: hoverColors,
+    }
+  ]
+};
+
+const countryPData = {
+  labels: ['paulig TA cup 200 ml', 'Tazza hot choco', 'Paulig Vending Medium Roast', 'Paulig Special Espresso', 'Lipton Lemon tea', 'Vendor Whitener', 'Vendor Espresso', 'Tazza Low Lactose Hot Choco'],
+  datasets: [
+    {
+      borderWidth: 1,
+      data: [45, 34, 56, 32, 56, 67, 63, 71],
+      backgroundColor: barColors,
+      hoverBackgroundColor: hoverColors,
+    }
+  ]
+};
+
 
 const bData = (isQuantity) => ({
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -79,11 +104,12 @@ const barOption = (e, setIsQuantity) => {
 export default function DataDashboard() {
   const [isLoading, setLoading] = useState(true);
   const [isQuantity, setIsQuantity] = useState(true);
+  const [pDataValue, setPDataValue] = useState(personalPData);
   
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading(false), 4000);
   }, []);
-
+  
 const textBox1Props = {
   textValue: 'Based on studies, customers buy more coffee when the days are shorter, so stock up ready for Winter!',
   textClass: 'c-dashboard__tip'
@@ -131,12 +157,19 @@ const textBox4Props = {
               <Col span={2}></Col>
               <Col span={20}>
               <h2 className='c-dashboard__centerText'>
-                Most frequently ordered products in this season
+                Most frequently ordered products this season (based off previous data)
               </h2>
               </Col>
               <Col span={2}></Col>
+              <Col span={24} style={{textAlign: 'center', margin: '20px'}}>
+                <Radio.Group defaultValue="personal">
+                  <Radio.Button value="personal" onClick={() => setPDataValue(personalPData)}>Personal data</Radio.Button>
+                  <Radio.Button value="city" onClick={() => setPDataValue(cityPData)}>Helsinki</Radio.Button>
+                  <Radio.Button value="country" onClick={() => setPDataValue(countryPData)}>Finland</Radio.Button>
+                </Radio.Group>
+              </Col>
               <Col span={24}>
-                <Polar data={pData} />
+                <Polar data={pDataValue} />
               </Col>
             </Row>
           </Col>
