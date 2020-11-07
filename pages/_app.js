@@ -10,6 +10,18 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Paulig Data Dashboard</title>
         <link rel="icon" href="/coffee-icon.png" />
+        <link
+          rel="preload"
+          href="/fonts/Neutra-Text-Book.otf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Mirador.otf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       <main>
         <Header />

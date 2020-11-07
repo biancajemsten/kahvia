@@ -4,3 +4,18 @@
   --dark-brown: #2e2218;
   --light-brown: #513629;
 }
+
+@font-face {
+  font-family: "NeutraBook";
+  src: url("/fonts/Neutra-Text-Book.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mirador";
+  src: url("/fonts/Mirador.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}

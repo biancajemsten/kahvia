@@ -2,6 +2,14 @@ import { Col, Row } from "antd";
 import { useState, useEffect } from "react";
 import { Loading } from "../components/Loading";
 import { CafeSummary } from "../components/CafeSummary";
+
+const summaryProps = {
+  title: "Helsinki Cafe",
+  nextScheduledDelivery: "Nov 15",
+  mostPurchasedProduct: "Juhla Mokha",
+  orderFrequency: "Weekly"
+};
+
 export default function DataDashboard() {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
@@ -20,7 +28,7 @@ export default function DataDashboard() {
       <div className="c-dashboard__container">
         <Row>
           <Col span={8}>
-            <CafeSummary />
+            <CafeSummary {...summaryProps} />
           </Col>
           <Col flex={1}>Item2</Col>
         </Row>
