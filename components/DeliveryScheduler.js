@@ -59,7 +59,7 @@ const [toTime, setToTime] = useState('');
       }
     </Row>
     <Row>
-    <Title className="c-delivery-scheduler__title">
+    <Title className="c-delivery-scheduler__second-title">
         Other deliveries in your area
       </Title>
     </Row>
