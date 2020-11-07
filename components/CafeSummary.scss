@@ -1,0 +1,16 @@
+.c-cafe-summary {
+  background-color: var(--dark-red);
+  padding: 15px;
+  border-radius: 5px;
+  &__title,
+  .ant-typography {
+    color: white;
+  }
+  h1.ant-typography {
+    font-weight: 300;
+  }
+
+  &__row {
+    margin-bottom: 5px;
+  }
+}
