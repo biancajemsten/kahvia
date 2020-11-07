@@ -13,7 +13,7 @@ const hoverColors =['rgba(66,22,22,0.8)','rgba(133,90,69,0.8)', 'rgba(81,54,41,0
     datasets: [
       {
         borderWidth: 1,
-        data: [65, 59, 80, 81, 92, 51, 37, 78],
+        data: [65, 59, 80, 81, 52, 71, 37, 78],
         backgroundColor: barColors,
         hoverBackgroundColor: hoverColors,
 
@@ -121,20 +121,23 @@ const textBox4Props = {
         <Row>
           <Col span={8}>
             <CafeSummary {...summaryProps} />
-              <TextBox {...textBox1Props} style={{marginTop: 24}} />
-              <TextBox {...textBox2Props} />
-              <TextBox  {...textBox4Props} />
-              <TextBox {...textBox3Props} />
+            <TextBox {...textBox1Props} style={{marginTop: 24}} />
+            <TextBox {...textBox2Props} />
+            <TextBox  {...textBox4Props} />
+            <TextBox {...textBox3Props} />
           </Col>
-          <Col span={4}></Col>
-          <Col span={12}>
-            <Row span={24}>
-            <h2>
-              Most frequently ordered products in this season
-            </h2>
-            </Row>
-            <Row span={24}>
-              <Polar data={pData} />
+          <Col span={16}>
+            <Row>
+              <Col span={2}></Col>
+              <Col span={20}>
+              <h2 className='c-dashboard__centerText'>
+                Most frequently ordered products in this season
+              </h2>
+              </Col>
+              <Col span={2}></Col>
+              <Col span={24}>
+                <Polar data={pData} />
+              </Col>
             </Row>
           </Col>
         </Row>
@@ -154,13 +157,15 @@ const textBox4Props = {
           </Col>
         </Row>
         <Row>
-          <Col span={2}></Col>
+          <Col span={2}>
+              <p className="c-dashboard__rotatedAxes">{isQuantity ? 'Av. orders per cafe' : 'Av. revenue from orders per cafe (euros)'}</p>
+          </Col>
           <Col span={20}>
             <Bar data={() => bData(isQuantity)} />
           </Col>
           <Col span={2}></Col>
         </Row>
-                <Row>
+        <Row>
           <Col span={8}></Col>
           <Col span={8}>
             <p className="c-dashboard__axesDescription">Monthly average per cafe</p>

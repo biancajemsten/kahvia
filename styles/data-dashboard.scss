@@ -7,12 +7,21 @@
   }
   &__tip {
     margin-top: 24px;
-
-    &__chartDescription {
-      margin: 35px 0 15px;
-    }
-    &__axesDescription {
-      text-align: center;
-    }
+  }
+  &__chartDescription {
+    margin: 65px 0 15px;
+  }
+  &__axesDescription {
+    text-align: center;
+  }
+  &__centerText {
+    text-align: center;
+  }
+  &__rotatedAxes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    width: 300%;
   }
 }
