@@ -58,7 +58,7 @@ export function DeliveryScheduler() {
         )}
       </Row>
       <Row>
-        <Title className="c-delivery-scheduler__title">
+        <Title className="c-delivery-scheduler__second-title">
           Other deliveries in your area
         </Title>
       </Row>
@@ -68,7 +68,7 @@ export function DeliveryScheduler() {
           <Text> choose a date to see other local deliveries</Text>
         )}
       </Row>
-      <div className="c-delivery-scheduler__others">
+      <div class="c-delivery-scheduler__others">
         {chosenDate && (
           <OtherDeliveries
             date={chosenDate}
