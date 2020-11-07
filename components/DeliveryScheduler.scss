@@ -1,26 +1,33 @@
 .c-delivery-scheduler {
-    background-color: var(--dark-red);
-    padding: 15px;
-    border-radius: 5px;
-    &__title,
-    .ant-typography {
-      color: white;
-    }
-    h1.ant-typography {
-      font-weight: 300;
-      font-family: "Mirador";
-    }
-  
-    &__row {
-      margin-bottom: 5px;
-    }
-    &__second-title{
-      margin-top: 0.5em;
-    }
-    &__others{
-      max-height: 100px;
-      overflow-y: auto;
-    }
-
+  background-color: var(--dark-red);
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 35px;
+  &__title,
+  .ant-typography {
+    color: white;
   }
-  
+  h1.ant-typography {
+    font-weight: 300;
+    font-family: "Mirador";
+  }
+
+  &__row {
+    margin-bottom: 5px;
+  }
+  &__second-title {
+    margin-top: 0.5em;
+  }
+  &__others {
+    max-height: 100px;
+    overflow-y: auto;
+  }
+
+  &__align-right.ant-col {
+    display: flex;
+    justify-content: flex-end;
+    > div {
+      min-width: 130px;
+    }
+  }
+}
