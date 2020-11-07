@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Loading } from "../components/Loading";
 import { Bar, Polar } from 'react-chartjs-2';
 import { CafeSummary } from "../components/CafeSummary";
+import { TextBox } from "../components/TextBox";
 
 const barColors =['rgba(66,22,22,0.7)','rgba(133,90,69,0.7)', 'rgba(81,54,41,0.7)', 'rgba(56,38,29,0.7)', 'rgba(133,117,109,0.7)', 'rgba(245,166,127,0.7)', 'rgba(31,23,16,0.7)', 'rgba(71,52,36,0.7)']
 const hoverColors =['rgba(66,22,22,0.8)','rgba(133,90,69,0.8)', 'rgba(81,54,41,0.8)', 'rgba(56,38,29,0.8)', 'rgba(133,117,109,0.8)', 'rgba(245,166,127,0.8)', 'rgba(31,23,16,0.8)', 'rgba(71,52,36,0.8)']
@@ -24,7 +25,7 @@ const bData = (isQuantity) => ({
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   datasets: [
     {
-      label: 'City',
+      label: 'Helsinki',
       backgroundColor: 'rgba(66,22,22,0.7)',
       borderColor: 'rgba(66,22,22,0.7)',
       borderWidth: 1,
@@ -33,7 +34,7 @@ const bData = (isQuantity) => ({
       data: isQuantity ? cityDataForQuantity : cityDataForRevenue,
     },
     {
-      label: 'Country',
+      label: 'Finland',
       backgroundColor: 'rgba(81,54,41,0.9)',
       borderColor: 'rgba(81,54,41,0.9)',
       borderWidth: 1,
@@ -44,10 +45,10 @@ const bData = (isQuantity) => ({
   ]
 });
 
-  const cityDataForQuantity = [34, 23, 82, 91, 84, 62, 52, 74, 52, 41, 31, 38];
-  const countryDataForQuantity = [72, 18, 37, 81, 90, 58, 51, 67, 61, 45, 28, 40];
-  const cityDataForRevenue = [134, 123, 182, 191, 184, 162, 152, 174, 152, 141, 131, 138];
-  const countryDataForRevenue = [172, 118, 137, 91, 190, 158, 52, 167, 161, 145, 105, 140];
+  const cityDataForQuantity = [191, 184, 162, 182, 134, 123, 152, 141, 131, 138, 162, 174];
+  const countryDataForQuantity = [190, 158, 151, 172, 118, 137, 167, 161, 145, 128, 170, 181];
+  const cityDataForRevenue = [995, 884, 962, 434, 523, 382, 452, 656, 745, 635, 838, 974];
+  const countryDataForRevenue = [990, 758, 872, 558, 437, 395, 452, 645, 505, 740, 867, 961];
   
 const barOption = (setIsQuantity, isQuantity) => (
     setIsQuantity(!isQuantity)
@@ -61,6 +62,10 @@ export default function DataDashboard() {
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
+
+const textBoxProps = {
+  textValue: 'Pssst... Based on studies customers buy more coffee when the days are shorter, so stock up ready for winter!'
+}
 
   const summaryProps = {
     title: "Helsinki Cafe",
@@ -80,25 +85,23 @@ export default function DataDashboard() {
   else
     return (
       <div className="c-dashboard__container">
-        <div>TOP PART: BIANCA </div>
-        <h1>This is a company data dashboard</h1>
         <Row>
           <Col span={7}>
             <CafeSummary {...summaryProps} />
-            <CafeSummary {...summaryProps} />
+              <TextBox {...textBoxProps} />
           </Col>
           <Col span={17}>
             <Polar data={pData} />
           </Col>
         </Row>
         <Row>
-          <Col span={2}></Col>
           <Col span={20}>
             <Bar data={() => bData(isQuantity)} />
           </Col>
-          <Col span={2}></Col>
+          <Col span={4}>
+            <button onClick={() => barOption(setIsQuantity, isQuantity)}>{isQuantity ? 'Revenue' : 'Quantity'}</button>
+          </Col>
         </Row>
-        <button onClick={() => barOption(setIsQuantity, isQuantity)}>{isQuantity ? 'Revenue' : 'Quantity'}</button>
       </div>
     );
 }
