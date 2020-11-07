@@ -1,0 +1,45 @@
+.c-textbox{
+    display: flex;
+    background-color: var(--dark-beige);
+    border-radius: 5px;
+    &__bean{
+        height: 30px;
+        margin: 50%;
+        -webkit-animation: jump 1.5s linear infinite;
+        -moz-animation: jump 1.5s linear infinite;
+        animation: jump 1.5s linear infinite;
+    }
+    &__text{
+        padding: 10px 32px;
+    }
+
+}
+
+@-webkit-keyframes jump {
+    50% {
+      -webkit-transform: translateY(5px);
+    }
+    0%,
+    100% {
+      -webkit-transform: translateY(0);
+    }
+  }
+  @-moz-keyframes jump {
+    50% {
+      -webkit-transform: translateY(5px);
+    }
+    0%,
+    100% {
+      -webkit-transform: translateY(0);
+    }
+  }
+  @keyframes jump {
+    50% {
+      -webkit-transform: translateY(5px);
+    }
+    0%,
+    100% {
+      -webkit-transform: translateY(0);
+    }
+  }
+  
