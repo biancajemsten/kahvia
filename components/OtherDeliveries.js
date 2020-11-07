@@ -11,13 +11,14 @@ export function OtherDeliveries({
     const deliveries = deliverySchedule(date).deliverySchedule
     if(chosenTime)
     return(
-        deliveries.map((item) =>  item.time === chosenTime ? (
+        deliveries.map((item) =>  item.time === chosenTime && (
      
             <div className="c-other-deliveries">
             <Row>
                 <Col span={7}>
                <Row><Text>{item.customerName}</Text></Row> 
                <Row> <Text>{item.date}</Text></Row>
+               <Row> <Text>{item.time}</Text></Row>
                 </Col>
                 <Col span={8}>
                 <Button type="primary">Join this delivery</Button>
@@ -27,14 +28,8 @@ export function OtherDeliveries({
                 </Col>
             </Row>
         </div> 
-        ) : 
-        <div className="c-other-deliveries">
-            <Row>
-               <Text>No other deliveries within your timeslot, please pick another time.</Text>
-            </Row>
-        </div> 
-        )
-    );
+        ))
+    )
     else
     return(
      deliveries.map((item) => (
@@ -43,8 +38,11 @@ export function OtherDeliveries({
             <Row className="c-other-deliveries__row">
                 <Text>{item.customerName}</Text>
             </Row>
-            <Row class="c-other-deliveries__row">
+            <Row className="c-other-deliveries__row">
                 <Text>{item.date}</Text>
+            </Row>
+            <Row className="c-other-deliveries__row">
+                <Text>{item.time}</Text>
             </Row>
         </div> 
      )      
