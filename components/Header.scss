@@ -1,10 +1,11 @@
 .c-header {
+    background-color: var(--beige);
     &__inner{
         width: 100vw;
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        padding: 20px 48px 0 48px;
+        padding: 20px 48px 20px 48px;
     }
     &__user{        
         display: flex;

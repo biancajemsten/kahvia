@@ -1,11 +1,16 @@
 import { Typography, Row, Col } from "antd";
 import "./CafeSummary.scss";
 
-export function CafeSummary() {
+export function CafeSummary({
+  title,
+  nextScheduledDelivery,
+  mostPurchasedProduct,
+  orderFrequency
+}) {
   return (
     <div className="c-cafe-summary">
       <Typography.Title className="c-cafe-summary__title">
-        Helsinki Cafe
+        {title}
       </Typography.Title>
       <hr />
       <Row className="c-cafe-summary__row">
@@ -13,7 +18,7 @@ export function CafeSummary() {
           <Typography.Text>Next scheduled delivery</Typography.Text>
         </Col>
         <Col span={8} align="right">
-          <Typography.Text>Nov 15</Typography.Text>
+          <Typography.Text>{nextScheduledDelivery}</Typography.Text>
         </Col>
       </Row>
       <Row className="c-cafe-summary__row">
@@ -21,7 +26,7 @@ export function CafeSummary() {
           <Typography.Text>Most purchased product</Typography.Text>
         </Col>
         <Col span={8} align="right">
-          <Typography.Text>Juhla Mokha</Typography.Text>
+          <Typography.Text>{mostPurchasedProduct}</Typography.Text>
         </Col>
       </Row>
       <Row className="c-cafe-summary__row">
@@ -29,7 +34,7 @@ export function CafeSummary() {
           <Typography.Text>Order frequency</Typography.Text>
         </Col>
         <Col span={8} align="right">
-          <Typography.Text>Weekly</Typography.Text>
+          <Typography.Text>{orderFrequency}</Typography.Text>
         </Col>
       </Row>
     </div>

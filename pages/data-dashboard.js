@@ -81,15 +81,20 @@ const barOption = (setIsQuantity, isQuantity) => (
 );
   
 
-  export default function DataDashboard() {
+export default function DataDashboard() {
   const [isLoading, setLoading] = useState(false);
   const [isQuantity, setIsQuantity] = useState(true);
+  
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-
-  
+  const summaryProps = {
+    title: "Helsinki Cafe",
+    nextScheduledDelivery: "Nov 15",
+    mostPurchasedProduct: "Juhla Mokha",
+    orderFrequency: "Weekly"
+  };
 
   if (isLoading)
     return (
@@ -106,13 +111,12 @@ const barOption = (setIsQuantity, isQuantity) => (
         <h1>This is a company data dashboard</h1>
         <Row>
           <Col span={8}>
-            <CafeSummary />
+            <CafeSummary {...summaryProps} />
           </Col>
           <Col flex={1}>Item2</Col>
         </Row>
         <div><Polar data={pData} /></div>
         <div><Bar data={() => bData(isQuantity)} /></div>
-        <p>izzy</p>
         <button onClick={() => barOption(setIsQuantity, isQuantity)}>{isQuantity ? 'Revenue' : 'Quantity'}</button>
       </div>
     );

@@ -12,7 +12,7 @@ export function HeaderComponent() {
                             <Image
                             src="/PauligLogo.png"
                             alt="Paulig Logo"
-                            width={300}
+                            width={200}
                             height={150}
                             
                             />
