@@ -1,4 +1,5 @@
 import "../styles/antd.less";
+import "../styles/index.scss";
 // import App from 'next/app'
 
 function MyApp({ Component, pageProps }) {
