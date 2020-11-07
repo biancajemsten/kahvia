@@ -8,6 +8,7 @@
 const withSass = require("@zeit/next-sass");
 const withLess = require("@zeit/next-less");
 const withCSS = require("@zeit/next-css");
+const withImages = require("next-images");
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -26,7 +27,8 @@ module.exports = withCSS({
     withSass({
       lessLoaderOptions: {
         javascriptEnabled: true
-      }
+      },
+      ...withImages()
     })
   )
 });
