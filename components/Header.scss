@@ -1,22 +1,24 @@
 .c-header {
-    background-color: var(--beige);
-    &__inner{
-        width: 100vw;
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        padding: 20px 48px 20px 48px;
+  &__inner {
+    width: 100vw;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 20px 48px 20px 48px;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    grid-column: 1;
+    font-size: 30px;
+  }
+  &__image {
+    grid-column: 2 / span 2;
+    display: flex;
+    justify-content: center;
+
+    img {
+      cursor: pointer;
     }
-    &__user{        
-        display: flex;
-        align-items: center;
-        grid-column: 1;
-        font-size: 30px;
-  
-    }
-    &__image{
-        grid-column: 2 / span 2;
-        display: flex;
-        justify-content: center;
-    }
+  }
 }

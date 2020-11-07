@@ -1,31 +1,32 @@
-.c-hero{
-    height: 25vw;
-    margin: 0 -48px;
-    position: relative;
-    &__overlay{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        
-        left: 0;
-        right: 0;
-        width: 100%; /* Full width (cover the whole page) */
-        height: 100%;
-        z-index: 2;
-        background-color: rgba(0,0,0,0.3);
-        
-    }
-    &__title{
-        width: 100%;
-        padding: 10% 48px;
-        text-align: center;
-        
-    }
+.c-hero {
+  height: 25vw;
+  margin: 0 -48px;
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &__overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
 
-h1.ant-typography {
+    left: 0;
+    right: 0;
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  &__title {
+    width: 100%;
+    padding: 10% 48px;
+    text-align: center;
+  }
+
+  h1.ant-typography {
     color: var(--beige);
     font-size: 40px;
     font-family: "Mirador";
   }
 }
-
