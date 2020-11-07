@@ -1,6 +1,10 @@
 import "../styles/antd.less";
 import Head from "next/head";
+import "../styles/index.scss";
 import {HeaderComponent as Header} from '../components/Header';
+// import App from 'next/app'
+
+
 function MyApp({ Component, pageProps }) {
   return (
     <div>
