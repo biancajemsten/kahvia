@@ -1,0 +1,57 @@
+.c-loading {
+  &__bean-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  &__bean {
+    height: 30px;
+    margin: 10px;
+    -webkit-animation: jump 1.5s linear infinite;
+    -moz-animation: jump 1.5s linear infinite;
+    animation: jump 1.5s linear infinite;
+    &:nth-of-type(1) {
+      -webkit-animation-delay: 0.49s;
+      -moz-animation-delay: 0.49s;
+      animation-delay: 0.49s;
+    }
+    &:nth-of-type(2) {
+      -webkit-animation-delay: 0.62s;
+      -moz-animation-delay: 0.62s;
+      animation-delay: 0.62s;
+    }
+    &:nth-of-type(3) {
+      -webkit-animation-delay: 0.75s;
+      -moz-animation-delay: 0.75s;
+      animation-delay: 0.75s;
+    }
+  }
+}
+
+@-webkit-keyframes jump {
+  50% {
+    -webkit-transform: translateY(5px);
+  }
+  0%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes jump {
+  50% {
+    -webkit-transform: translateY(5px);
+  }
+  0%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes jump {
+  50% {
+    -webkit-transform: translateY(5px);
+  }
+  0%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
