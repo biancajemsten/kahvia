@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Row, Radio } from "antd";
 import { useState, useEffect } from "react";
 import { Loading } from "../components/Loading";
 import { Bar, Polar } from 'react-chartjs-2';
@@ -42,21 +42,38 @@ const bData = (isQuantity) => ({
       hoverBorderColor: 'rgba(81,54,41,0.95)',
       data: isQuantity ? countryDataForQuantity : countryDataForRevenue,
     }
-  ]
+  ],
+  options: {
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Y text'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'X text'
+        }
+      }],
+    }
+  },
 });
 
-  const cityDataForQuantity = [191, 184, 162, 182, 134, 123, 152, 141, 131, 138, 162, 174];
-  const countryDataForQuantity = [190, 158, 151, 172, 118, 137, 167, 161, 145, 128, 170, 181];
-  const cityDataForRevenue = [995, 884, 962, 434, 523, 382, 452, 656, 745, 635, 838, 974];
-  const countryDataForRevenue = [990, 758, 872, 558, 437, 395, 452, 645, 505, 740, 867, 961];
+  const cityDataForQuantity = [179, 184, 162, 182, 134, 123, 152, 141, 131, 138, 162, 174];
+  const countryDataForQuantity = [190, 158, 151, 172, 118, 137, 167, 161, 145, 128, 170, 151];
+  const cityDataForRevenue = [915, 884, 962, 434, 523, 382, 452, 656, 745, 635, 838, 984];
+  const countryDataForRevenue = [993, 758, 872, 558, 437, 395, 475, 645, 505, 740, 867, 951];
   
-const barOption = (setIsQuantity, isQuantity) => (
-    setIsQuantity(!isQuantity)
-);
+const barOption = (e, setIsQuantity) => {
+  const isQ = !!(e.target.value === 'quantity');
+  setIsQuantity(isQ);
+}
   
 
 export default function DataDashboard() {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [isQuantity, setIsQuantity] = useState(true);
   
   useEffect(() => {
@@ -98,24 +115,46 @@ const textBox4Props = {
     return (
       <div className="c-dashboard__container">
         <Row>
-          <Col span={7}>
+          <Col span={8}>
             <CafeSummary {...summaryProps} />
               <TextBox {...textBox1Props} style={{marginTop: 24}} />
               <TextBox {...textBox2Props} />
               <TextBox  {...textBox4Props} />
               <TextBox {...textBox3Props} />
           </Col>
-          <Col span={17}>
-            <Polar data={pData} />
+          <Col span={4}></Col>
+          <Col span={12}>
+            <Row span={24}>
+            <h2>
+              Most frequently ordered products in this season
+            </h2>
+            </Row>
+            <Row span={24}>
+              <Polar data={pData} />
+            </Row>
           </Col>
         </Row>
         <Row>
+          <Col span={2}></Col>
+          <Col span={22}>
+            <h2 className="c-dashboard__chartDescription">
+              Average coffee orders for each restaurant based on:
+            </h2>
+          </Col>
+          <Col span={2}></Col>
+          <Col span={8}>
+            <Radio.Group defaultValue="quantity" onChange={(e) => barOption(e, setIsQuantity)}>
+              <Radio.Button value="quantity">Quantities</Radio.Button>
+              <Radio.Button value="revenue">Revenue</Radio.Button>
+            </Radio.Group>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={2}></Col>
           <Col span={20}>
             <Bar data={() => bData(isQuantity)} />
           </Col>
-          <Col span={4}>
-            <button onClick={() => barOption(setIsQuantity, isQuantity)}>{isQuantity ? 'Revenue' : 'Quantity'}</button>
-          </Col>
+          <Col span={2}></Col>
         </Row>
       </div>
     );
