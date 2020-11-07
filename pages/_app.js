@@ -11,6 +11,9 @@ function MyApp({ Component, pageProps }) {
     <main>
   
     <Header/>
+    <div style={{paddingLeft:48, paddingRight: 48}}>
+    <Component {...pageProps}/>
+    </div>
     </main>
     </div>
   )

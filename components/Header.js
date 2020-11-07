@@ -4,10 +4,10 @@ import './Header.scss';
 
 export function HeaderComponent() {
     return (
-        <header className="header">
-                    <div className="header__inner">
-                            <p className="header__user">Hotel Name</p>
-                            <div className="header__image">
+        <header className="c-header">
+                    <div className="c-header__inner">
+                            <p className="c-header__user">Hotel Name</p>
+                            <div className="c-header__image">
                             <Link href="/">
                             <Image
                             src="/PauligLogo.png"
