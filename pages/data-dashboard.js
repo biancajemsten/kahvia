@@ -1,76 +1,49 @@
 import { Col, Row } from "antd";
 import { useState, useEffect } from "react";
 import { Loading } from "../components/Loading";
-import { Bar, Line, Polar } from 'react-chartjs-2';
+import { Bar, Polar } from 'react-chartjs-2';
 import { CafeSummary } from "../components/CafeSummary";
 
+const barColors =['rgba(66,22,22,0.7)','rgba(133,90,69,0.7)', 'rgba(81,54,41,0.7)', 'rgba(56,38,29,0.7)', 'rgba(133,117,109,0.7)', 'rgba(245,166,127,0.7)', 'rgba(31,23,16,0.7)', 'rgba(71,52,36,0.7)']
+const hoverColors =['rgba(66,22,22,0.8)','rgba(133,90,69,0.8)', 'rgba(81,54,41,0.8)', 'rgba(56,38,29,0.8)', 'rgba(133,117,109,0.8)', 'rgba(245,166,127,0.8)', 'rgba(31,23,16,0.8)', 'rgba(71,52,36,0.8)']
 
   const pData = {
-    labels: ['Coffee', 'Tea', 'Hot chocolate', 'decaf'],
+    labels: ['paulig TA cup 200 ml', 'Tazza hot choco', 'Paulig Vending Medium Roast', 'Paulig Special Espresso','Lipton Lemon tea','Vendor Whitener','Vendor Espresso','Tazza Low Lactose Hot Choco'],
     datasets: [
       {
-        label: 'My First dataset',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        data: [65, 59, 80, 81]
+        data: [65, 59, 80, 81, 92, 51, 37, 78],
+        backgroundColor: barColors,
+        hoverBackgroundColor: hoverColors,
+
       }
     ]
   };
 
-  const bData = (isQuantity) => ({
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    datasets: [
-      {
-        label: 'City',
-        backgroundColor: 'rgba(255,99,132)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        stack: 1,
-        data: isQuantity ? cityDataForQuantity : cityDataForRevenue,
-      }, 
-      {
-        label: 'Country',
-        backgroundColor: 'rgba(255,150,255)',
-        borderColor: 'rgba(255,150,255,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,150,255)',
-        hoverBorderColor: 'rgba(255,150,255,1)',
-        stack: 1,
-        data: isQuantity ? countryDataForQuantity : countryDataForRevenue,
-      }
-    ]
-  })
+const bData = (isQuantity) => ({
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  datasets: [
+    {
+      label: 'City',
+      backgroundColor: 'rgba(66,22,22,0.7)',
+      borderColor: 'rgba(66,22,22,0.7)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(66,22,22,0.8)',
+      hoverBorderColor: 'rgba(66,22,22,0.8)',
+      data: isQuantity ? cityDataForQuantity : cityDataForRevenue,
+    },
+    {
+      label: 'Country',
+      backgroundColor: 'rgba(81,54,41,0.9)',
+      borderColor: 'rgba(81,54,41,0.9)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(81,54,41,0.95)',
+      hoverBorderColor: 'rgba(81,54,41,0.95)',
+      data: isQuantity ? countryDataForQuantity : countryDataForRevenue,
+    }
+  ]
+});
 
-  const lData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    datasets: [
-      {
-        label: 'City',
-        backgroundColor: 'rgba(255,99,132)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        order: 1,
-        data: [34, 23, 82, 91, 84, 62, 52, 74, 52, 41, 31, 38]
-      }, 
-      {
-        label: 'Country',
-        backgroundColor: 'rgba(255,150,255)',
-        borderColor: 'rgba(255,150,255,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,150,255)',
-        hoverBorderColor: 'rgba(255,150,255,1)',
-        order: 2,
-        data: [72, 18, 37, 81, 90, 58, 51, 67, 61, 45, 28, 40]
-      }
-    ]
-  }
   const cityDataForQuantity = [34, 23, 82, 91, 84, 62, 52, 74, 52, 41, 31, 38];
   const countryDataForQuantity = [72, 18, 37, 81, 90, 58, 51, 67, 61, 45, 28, 40];
   const cityDataForRevenue = [134, 123, 182, 191, 184, 162, 152, 174, 152, 141, 131, 138];
@@ -110,13 +83,21 @@ export default function DataDashboard() {
         <div>TOP PART: BIANCA </div>
         <h1>This is a company data dashboard</h1>
         <Row>
-          <Col span={8}>
+          <Col span={7}>
+            <CafeSummary {...summaryProps} />
             <CafeSummary {...summaryProps} />
           </Col>
-          <Col flex={1}>Item2</Col>
+          <Col span={17}>
+            <Polar data={pData} />
+          </Col>
         </Row>
-        <div><Polar data={pData} /></div>
-        <div><Bar data={() => bData(isQuantity)} /></div>
+        <Row>
+          <Col span={2}></Col>
+          <Col span={20}>
+            <Bar data={() => bData(isQuantity)} />
+          </Col>
+          <Col span={2}></Col>
+        </Row>
         <button onClick={() => barOption(setIsQuantity, isQuantity)}>{isQuantity ? 'Revenue' : 'Quantity'}</button>
       </div>
     );
