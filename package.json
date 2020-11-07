@@ -15,7 +15,6 @@
     "axios": "^0.21.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.1",
-    "google-maps-react": "^2.0.6",
     "chart.js": "^2.9.4",
     "less": "^3.12.2",
     "newsapi": "^2.4.1",

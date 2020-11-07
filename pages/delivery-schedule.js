@@ -3,6 +3,7 @@ import {DeliverySummary} from "../components/DeliverySumamry";
 import {DeliveryScheduler} from "../components/DeliveryScheduler";
 import { TextBox } from "../components/TextBox";
 import {GoogleMaps} from '../components/GoogleMaps';
+import { Typography } from "antd";
 const summaryProps = {
     title: "Helsinki Cafe",
     nextScheduledDelivery: "Nov 15, 10am-12pm",
@@ -28,6 +29,7 @@ export default function DeliverySchedule() {
               <TextBox {...textBoxProps}/>
             </Col>
             <Col offset={2}  span={11}>
+              <Typography.Title>Find local vednors</Typography.Title>
               <GoogleMaps/>
             </Col>
         </Row>
