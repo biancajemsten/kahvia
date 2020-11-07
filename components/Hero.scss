@@ -1,0 +1,23 @@
+.c-hero{
+    height: 25vw;
+    margin: 0 -48px;
+    position: relative;
+    &__overlay{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: black;
+        opacity: 0.3;
+    }
+    &__title{
+        width: 100%;
+        padding: 10% 48px;
+        text-align: center;
+    }
+}
+
+h1.ant-typography {
+    color: white !important;
+  }
