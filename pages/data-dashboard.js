@@ -16,9 +16,11 @@ export default function DataDashboard() {
     );
   else
     return (
-      <div className="container">
+      <div className="c-dashboard__container">
+        <div>TOP PART: BIANCA </div>
         <h1>This is a company data dashboard</h1>
         <Empty />
+        <div>ISABEL WORK ON CHARTS HERE</div>
       </div>
     );
 }
