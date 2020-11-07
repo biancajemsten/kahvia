@@ -84,10 +84,22 @@ export default function DataDashboard() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-const textBoxProps = {
-  textValue: 'Pssst... Based on studies customers buy more coffee when the days are shorter, so stock up ready for winter!'
+const textBox1Props = {
+  textValue: 'Based on studies, customers buy more coffee when the days are shorter, so stock up ready for Winter!',
+  textClass: 'c-dashboard__tip'
 }
-
+const textBox2Props = {
+  textValue: 'From October, customers are 30% more likely to stay inside. Do you want to reduce the number of take away cups?',
+  textClass: 'c-dashboard__tip'
+}
+const textBox3Props = {
+  textValue: 'Check out our shared deliveries to save money on travel and the environment!',
+  textClass: 'c-dashboard__tip'
+}
+const textBox4Props = {
+  textValue: 'The Helsinki Christmas Markets start in 1 month! Do you know the footfall past your cafe?',
+  textClass: 'c-dashboard__tip'
+}
   const summaryProps = {
     title: "Helsinki Cafe",
     nextScheduledDelivery: "Nov 15",
@@ -109,7 +121,10 @@ const textBoxProps = {
         <Row>
           <Col span={8}>
             <CafeSummary {...summaryProps} />
-              <TextBox {...textBoxProps} />
+              <TextBox {...textBox1Props} style={{marginTop: 24}} />
+              <TextBox {...textBox2Props} />
+              <TextBox  {...textBox4Props} />
+              <TextBox {...textBox3Props} />
           </Col>
           <Col span={4}></Col>
           <Col span={12}>

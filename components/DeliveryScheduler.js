@@ -70,7 +70,7 @@ const [toTime, setToTime] = useState('');
         }
        
     </Row>
-    <div class="c-delivery-scheduler__others">
+    <div className="c-delivery-scheduler__others">
     {chosenDate &&
             <OtherDeliveries date={chosenDate} chosenTime={fromTime}></OtherDeliveries>
         }
