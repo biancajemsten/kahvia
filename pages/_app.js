@@ -29,7 +29,8 @@ function MyApp({ Component, pageProps }) {
           style={{
             paddingLeft: 48,
             paddingRight: 48,
-            height: "80vh"
+            height: "100vh",
+            backgroundColor:"var(--beige)"
           }}
         >
           <Component {...pageProps} />
