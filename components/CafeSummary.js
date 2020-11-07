@@ -8,7 +8,15 @@ export function CafeSummary({
   orderFrequency
 }) {
   return (
-    <div className="c-cafe-summary">
+    <div
+      className="c-cafe-summary"
+      style={{
+        backgroundImage:
+          "url(" + `${require("../assets/coffee-matte.jpg")}` + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center"
+      }}
+    >
       <Typography.Title className="c-cafe-summary__title">
         {title}
       </Typography.Title>

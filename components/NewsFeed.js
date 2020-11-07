@@ -83,8 +83,6 @@ export function NewsFeed() {
         <Row className="c-news-feed__loading-container" align="center">
           <Col>
             <Title>Loading</Title>
-          </Col>
-          <Col flex span={2}>
             <img className="c-news-feed__bean" src={CoffeBeanURL} />
             <img className="c-news-feed__bean" src={CoffeBeanURL} />
             <img className="c-news-feed__bean" src={CoffeBeanURL} />
