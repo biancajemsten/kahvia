@@ -25,10 +25,14 @@
 
     &__publish-info.ant-typography {
       text-align: right;
-      background-color: var(--dark-red);
+      background-color: var(--dark-beige);
       color: white;
-      padding: 5px;
+      padding: 2px 5px;
       border-radius: 1em;
+    }
+    &__publish-container {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 
@@ -42,5 +46,17 @@
       background-color: var(--dark-red);
       padding: 10px;
     }
+  }
+
+  &__loading-container {
+    align-items: flex-end;
+    justify-content: center;
+    h1.ant-typography {
+      margin-bottom: 0;
+    }
+  }
+  &__bean {
+    width: 10px;
+    margin: 0 2px;
   }
 }

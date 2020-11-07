@@ -4,6 +4,7 @@ import { Typography, Col, Row, Image } from "antd";
 const { Title, Paragraph, Text } = Typography;
 import { Loading } from "./Loading";
 import "./NewsFeed.scss";
+import CoffeBeanURL from "../assets/coffee-bean.svg";
 
 function NewsItem({
   title,
@@ -11,7 +12,7 @@ function NewsItem({
   url,
   description,
   publishedAt,
-  author
+  source
 }) {
   return (
     <article className="c-news-feed__item">
@@ -21,6 +22,7 @@ function NewsItem({
             <Image
               className="c-news-feed__item__image"
               width={250}
+              height={140}
               src={urlToImage}
             />
           </Col>
@@ -36,9 +38,12 @@ function NewsItem({
             >
               {description}
             </Paragraph>
-            <Text className="c-news-feed__item__publish-info">
-              Published {publishedAt.substring(0, 10)} by {author}
-            </Text>
+            <div className="c-news-feed__item__publish-container">
+              <Text ellipsis className="c-news-feed__item__publish-info">
+                Published {publishedAt.substring(0, 10)}{" "}
+                {source && source.name && `by ${source.name}`}
+              </Text>
+            </div>
           </Col>
         </Row>
       </a>
@@ -61,7 +66,6 @@ export function NewsFeed() {
           setHelsinkiArticles(response.data.helsinkiNews);
         if (response.data.coffeeNews)
           setCoffeeArticles(response.data.coffeeNews);
-        console.log(response, "response in frontend");
       }
       setLoading(false);
     };
@@ -72,19 +76,27 @@ export function NewsFeed() {
     fetchArticles();
   }, []);
 
-  console.log(helsinkiArticles, coffeeArticles);
   return (
     <div className="c-news-feed">
       <Title level={2} className="c-news-feed__title">
         Your personalized news feed
       </Title>
       {loading ? (
-        <Loading />
+        <Row className="c-news-feed__loading-container" align="center">
+          <Col>
+            <Title>Loading</Title>
+          </Col>
+          <Col flex span={2}>
+            <img className="c-news-feed__bean" src={CoffeBeanURL} />
+            <img className="c-news-feed__bean" src={CoffeBeanURL} />
+            <img className="c-news-feed__bean" src={CoffeBeanURL} />
+          </Col>
+        </Row>
       ) : (
         <Row className="c-news-feed__wrapper" gutter={[32, 16]} align="center">
           <Col span={12} xxl={10}>
             <Title className="c-news-feed__list__title" level={3}>
-              Helsinki articles
+              Helsinki
             </Title>
             <div className="c-news-feed__list">
               {helsinkiArticles &&
@@ -95,7 +107,7 @@ export function NewsFeed() {
           </Col>
           <Col span={12} xxl={10}>
             <Title className="c-news-feed__list__title" level={3}>
-              Coffee industry articles
+              Coffee Industry
             </Title>
             <div className="c-news-feed__list">
               {coffeeArticles &&
