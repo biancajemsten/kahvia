@@ -16,7 +16,7 @@ export function DeliveryScheduler() {
         <Col span={16}>
           <Text>Day</Text>
         </Col>
-        <Col span={8}>
+        <Col span={8} className="c-delivery-scheduler__align-right">
           <DatePicker
             onChange={(date, dateString) => setChosenDate(dateString)}
           />
@@ -26,7 +26,7 @@ export function DeliveryScheduler() {
         <Col span={16}>
           <Text>From</Text>
         </Col>
-        <Col span={8}>
+        <Col span={8} className="c-delivery-scheduler__align-right">
           <TimePicker
             onChange={(value, valueString) => setFromTime(valueString)}
           />
@@ -36,7 +36,7 @@ export function DeliveryScheduler() {
         <Col span={16}>
           <Text>To</Text>
         </Col>
-        <Col span={8}>
+        <Col span={8} className="c-delivery-scheduler__align-right">
           <TimePicker
             onChange={(value, valueString) => setToTime(valueString)}
           />

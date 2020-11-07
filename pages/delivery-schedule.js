@@ -19,9 +19,6 @@ export default function DeliverySchedule() {
     <div className="c-delivery__container">
       <DeliverySummary {...summaryProps} />
       <Row className="c-delivery__row">
-        <Col span={8} offset={8}></Col>
-      </Row>
-      <Row className="c-delivery__row">
         <Col span={11}>
           <DeliveryScheduler />
           <TextBox {...textBoxProps} />
