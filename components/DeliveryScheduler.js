@@ -42,6 +42,7 @@ export function DeliveryScheduler() {
         <Col span={8} className="c-delivery-scheduler__align-right">
           <TimePicker
             onChange={(value, valueString) => setToTime(valueString)}
+            format={format}
           />
         </Col>
       </Row>
