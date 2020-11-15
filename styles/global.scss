@@ -3,3 +3,13 @@ header {
   font-family: "NeutraBook";
   background-color: var(--beige);
 }
+
+.layout {
+  height: 100vh;
+  padding: 0 28px;
+  background-color: var(--beige);
+  width: 100vw;
+  @media (min-width: 768px) {
+    padding: 0 48px;
+  }
+}

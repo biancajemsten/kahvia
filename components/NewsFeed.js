@@ -1,10 +1,23 @@
 import Axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useLayoutEffect } from "react";
 import { Typography, Col, Row, Image } from "antd";
 const { Title, Paragraph, Text } = Typography;
 import { Loading } from "./Loading";
 import "./NewsFeed.scss";
 import CoffeBeanURL from "../assets/coffee-bean.svg";
+
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+}
 
 function NewsItem({
   title,
@@ -12,19 +25,16 @@ function NewsItem({
   url,
   description,
   publishedAt,
-  source
+  source,
+  largeScreen,
+  mediumScreen
 }) {
   return (
     <article className="c-news-feed__item">
       <a href={url}>
-        <Row wrap={false}>
-          <Col flex="250px">
-            <Image
-              className="c-news-feed__item__image"
-              width={250}
-              height={140}
-              src={urlToImage}
-            />
+        <Row wrap={!mediumScreen}>
+          <Col flex={mediumScreen && "250px"} span={!mediumScreen && 24}>
+            <img className="c-news-feed__item__image" src={urlToImage} />
           </Col>
           <Col className="c-news-feed__item__text-container" flex="auto">
             <Title ellipsis level={3}>
@@ -38,10 +48,12 @@ function NewsItem({
             >
               {description}
             </Paragraph>
-            <Text ellipsis className="c-news-feed__item__publish-info">
-              Published {publishedAt.substring(0, 10)}{" "}
-              {source && source.name && `by ${source.name}`}
-            </Text>
+            {mediumScreen && (
+              <Text ellipsis className="c-news-feed__item__publish-info">
+                Published {publishedAt.substring(0, 10)}{" "}
+                {largeScreen && source && source.name && `by ${source.name}`}
+              </Text>
+            )}
           </Col>
         </Row>
       </a>
@@ -53,6 +65,15 @@ export function NewsFeed() {
   const [loading, setLoading] = useState(true);
   const [helsinkiArticles, setHelsinkiArticles] = useState(null);
   const [coffeeArticles, setCoffeeArticles] = useState(null);
+  const [width, height] = useWindowSize();
+
+  const mediumScreen = useMemo(() => {
+    return width >= 575;
+  }, [width]);
+
+  const largeScreen = useMemo(() => {
+    return width >= 1200;
+  }, [width]);
 
   function fetchArticles() {
     setLoading(true);
@@ -90,25 +111,35 @@ export function NewsFeed() {
         </Row>
       ) : (
         <Row className="c-news-feed__wrapper" gutter={[32, 16]} align="center">
-          <Col span={12} xxl={10}>
+          <Col span={24} md={12} xxl={10}>
             <Title className="c-news-feed__list__title" level={3}>
               Helsinki
             </Title>
             <div className="c-news-feed__list">
               {helsinkiArticles &&
                 helsinkiArticles.map(article => (
-                  <NewsItem key={article.title} {...article} />
+                  <NewsItem
+                    key={article.title}
+                    {...article}
+                    largeScreen={largeScreen}
+                    mediumScreen={mediumScreen}
+                  />
                 ))}
             </div>
           </Col>
-          <Col span={12} xxl={10}>
+          <Col span={24} md={12} xxl={10}>
             <Title className="c-news-feed__list__title" level={3}>
               Coffee Industry
             </Title>
             <div className="c-news-feed__list">
               {coffeeArticles &&
                 coffeeArticles.map(article => (
-                  <NewsItem key={article.title} {...article} />
+                  <NewsItem
+                    key={article.title}
+                    {...article}
+                    largeScreen={largeScreen}
+                    mediumScreen={mediumScreen}
+                  />
                 ))}
             </div>
           </Col>
