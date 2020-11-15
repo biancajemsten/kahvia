@@ -1,7 +1,6 @@
 // import axios from "axios";
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
-// const newsapi = null;
 
 export default async (req, res) => {
   try {
