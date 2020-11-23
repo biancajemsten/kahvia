@@ -9,12 +9,7 @@ export function HeaderComponent() {
         <p className="c-header__user">Helsinki Cafe</p>
         <div className="c-header__image">
           <Link href="/">
-            <Image
-              src="/PauligLogo.png"
-              alt="Paulig Logo"
-              width={200}
-              height={150}
-            />
+            <img src="/PauligLogo.png" alt="Paulig Logo" />
           </Link>
         </div>
       </div>

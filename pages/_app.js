@@ -25,14 +25,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <main>
         <Header />
-        <div
-          style={{
-            paddingLeft: 48,
-            paddingRight: 48,
-            height: "100vh",
-            backgroundColor:"var(--beige)"
-          }}
-        >
+        <div className="layout">
           <Component {...pageProps} />
         </div>
       </main>

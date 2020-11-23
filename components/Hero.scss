@@ -1,16 +1,23 @@
 .c-hero {
-  height: 25vw;
-  margin: 0 -48px;
+  height: 40vw;
+  margin: 0 -28px;
   position: relative;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  @media (min-width: 768px) {
+    height: 25vw;
+    margin: 0 -48px;
+  }
+
   &__overlay {
     position: absolute;
     top: 0;
     bottom: 0;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     left: 0;
     right: 0;
     width: 100%; /* Full width (cover the whole page) */
@@ -18,15 +25,22 @@
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.3);
   }
-  &__title {
-    width: 100%;
-    padding: 10% 48px;
+  &__title.ant-typography {
+    padding: 5% 18px;
     text-align: center;
+    @media (min-width: 768px) {
+      padding: 10% 48px;
+    }
   }
 
   h1.ant-typography {
     color: var(--beige);
-    font-size: 40px;
+    margin-bottom: 0;
     font-family: "Mirador";
+    text-align: center;
+    @media (min-width: 768px) {
+      padding: 10% 48px;
+      font-size: 40px;
+    }
   }
 }

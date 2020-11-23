@@ -4,21 +4,47 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 20px 48px 20px 48px;
+    padding: 10px 18px;
+
+    @media (min-width: 768px) {
+      padding: 20px 48px;
+    }
   }
   &__user {
     display: flex;
     align-items: center;
     grid-column: 1;
-    font-size: 30px;
+    font-size: 12px;
+    margin-bottom: 0px;
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
   }
   &__image {
     grid-column: 2 / span 2;
     display: flex;
     justify-content: center;
 
-    img {
-      cursor: pointer;
+    &__inner {
+      width: 50%;
+
+      @media (min-width: 768px) {
+        width: 100%;
+      }
     }
+
+    img {
+      width: 100px;
+      height: 70px;
+      cursor: pointer;
+      @media (min-width: 768px) {
+        width: 200px;
+        height: 140px;
+      }
+    }
+  }
+
+  &__link {
+    width: 70%;
   }
 }
