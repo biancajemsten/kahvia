@@ -4,6 +4,19 @@
     }
     &__row{
         padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        @media (min-width: 768px) {
+            display: flex;
+            flex-direction: row;
+          }
+    }
+    &__map{
+        margin-bottom:40px;
+        @media (min-width: 767px) {
+            margin-left:5%;
+          }
+         
     }
  
 }

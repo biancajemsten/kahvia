@@ -1,6 +1,6 @@
 .c-delivery-summary {
   height: 200px;
-  margin: 0 -48px;
+  margin: 0 -28px;
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -41,5 +41,8 @@
   &__info.ant-typography {
     color: var(--beige);
     text-align: center;
+  }
+  @media (min-width: 767px) {
+    margin: 0 -48px;
   }
 }
