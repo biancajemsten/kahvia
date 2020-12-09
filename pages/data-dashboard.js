@@ -126,6 +126,10 @@ const textBox4Props = {
   textValue: 'The Helsinki Christmas Markets start in 1 month! Do you know the footfall past your cafe?',
   textClass: 'c-dashboard__tip'
 }
+
+const mobileTextBoxProps ={
+  textValue: "Please rotate your device or switch to desktop to see your stats"
+}
   const summaryProps = {
     title: "Helsinki Cafe",
     nextScheduledDelivery: "Nov 15",
@@ -143,19 +147,23 @@ const textBox4Props = {
     );
   else
     return (
+      <div>
+      <div className = "c-dashboard__mobile">
+         <TextBox {...mobileTextBoxProps} />
+      </div>
       <div className="c-dashboard__container">
         <Row>
-          <Col span={8}>
+          <Col span={24} lg={8}>
             <CafeSummary {...summaryProps} />
             <TextBox {...textBox1Props} style={{marginTop: 24}} />
             <TextBox {...textBox2Props} />
             <TextBox  {...textBox4Props} />
             <TextBox {...textBox3Props} />
           </Col>
-          <Col span={16}>
+          <Col span={24} lg={16}>
             <Row>
               <Col span={2}></Col>
-              <Col span={20}>
+              <Col span={20} md={20}>
               <h2 className='c-dashboard__centerText'>
                 Most frequently ordered products this season (based off previous data)
               </h2>
@@ -205,6 +213,7 @@ const textBox4Props = {
           </Col>
           <Col span={8}></Col>
         </Row>
+      </div>
       </div>
     );
 }

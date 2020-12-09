@@ -1,28 +1,45 @@
 .c-dashboard {
-  &__loading-container {
-    padding-top: 10vh;
+  &__mobile{
+    margin-top:25%;
+
   }
-  &__container {
-    height: 100%;
+ 
+  &__container{
+    display: none;
   }
-  &__tip {
-    margin-top: 24px;
+  @media (min-width: 767px) {
+    &__mobile{
+      display: none;
+    }
+    &__loading-container {
+      padding-top: 10vh;
+    }
+    &__container {
+      display: block;
+      height: 100%;
+    }
+    &__tip {
+      margin-top: 24px;
+      margin-bottom:24px;
+    }
+    &__chartDescription {
+      margin: 65px 0 15px;
+    }
+    &__axesDescription {
+      text-align: center;
+    }
+    &__centerText {
+      margin: 20px 0 0;
+      text-align: center;
+    }
+    &__rotatedAxes {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+      width: 300%;
+    }
   }
-  &__chartDescription {
-    margin: 65px 0 15px;
-  }
-  &__axesDescription {
-    text-align: center;
-  }
-  &__centerText {
-    margin: 20px 0 0;
-    text-align: center;
-  }
-  &__rotatedAxes {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-    width: 300%;
-  }
+  
+
 }

@@ -7,6 +7,8 @@ import {
 } from "react-google-maps";
 import CoffeBeanURL from "../assets/coffee-bean.svg";
 import GoogleMapStyles from "./GoogleMapStyles";
+import { Typography } from "antd";
+import { Col, Row } from "antd";
 
 const defaultCenter = { lat: 60.1699, lng: 24.9384 };
 const center2 = { lat: 60.1789, lng: 24.9381 };
@@ -68,6 +70,10 @@ const mapElementStyle = { height: "100%" };
 
 export function GoogleMaps() {
   return (
+    <div>
+    <Col>
+      <Typography.Title aling="left">Find local vendors</Typography.Title>
+    </Col>
     <RegularMap
       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyANsLoWH5uPUZMglEz8IcSTQKrmtU00nc0"
       loadingElement={<div style={loadingElementStyle} />}
@@ -77,5 +83,6 @@ export function GoogleMaps() {
         styles: GoogleMapStyles
       }}
     />
+    </div>
   );
 }
